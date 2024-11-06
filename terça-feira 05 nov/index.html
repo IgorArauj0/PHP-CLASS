@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efeito Scroll em Loop nas Divs</title>
+  <style>
+    /* Estilos básicos das seções */
+    .section {
+      width: 80%;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Estilos das divs internas */
+    .content-box {
+      width: 60%;
+      height: 150px;
+      background-color: #d0d0d0;
+      opacity: 0;
+      transform: translateY(100px); /* Posição inicial para o efeito */
+      transition: all 1s ease; /* Transição suave */
+    }
+
+    /* Classe de revelação */
+    .reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Estilos adicionais para o título */
+    #title {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="title" class="section">Título Principal</h1>
+  <div id="section1" class="section">
+    <div class="content-box">Conteúdo da Div 1 da Seção 1</div>
+    <div class="content-box">Conteúdo da Div 2 da Seção 1</div>
+  </div>
+  <div id="section2" class="section">
+    <div class="content-box">Conteúdo da Div 1 da Seção 2</div>
+    <div class="content-box">Conteúdo da Div 2 da Seção 2</div>
+  </div>
+  <div id="section3" class="section">
+    <div class="content-box">Conteúdo da Div 1 da Seção 3</div>
+    <div class="content-box">Conteúdo da Div 2 da Seção 3</div>
+  </div>
+
+  <script>
+    function initializeScrollEffect() {
+      const contentBoxes = document.querySelectorAll('.content-box');
+
+      // Configurações do Observer para as divs internas
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+          } else {
+            entry.target.classList.remove('reveal'); // Remove para que o efeito ocorra em loop
+          }
+        });
+      }, {
+        threshold: 0.5 // 50% do elemento visível
+      });
+
+      // Observando cada content-box
+      contentBoxes.forEach(box => {
+        observer.observe(box);
+      });
+    }
+
+    // Chamando a função para inicializar o efeito
+    initializeScrollEffect();
+  </script>
+</body>
+</html>
