@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação Simples de Formulário</title>
+    <style>
+        /* Estilização básica para o formulário */
+        .form-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <form id="formularioCadastro">
+            <!-- Campo de entrada para Nome -->
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" placeholder="Digite seu nome">
+
+            <!-- Campo de entrada para E-mail -->
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" placeholder="Digite seu e-mail">
+
+            <!-- Campo de entrada para Telefone -->
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" placeholder="(00) 00000-0000">
+
+            <!-- Botão de envio -->
+            <button type="button" onclick="validarFormulario()">Enviar</button>
+            <div id="mensagemErro" class="error"></div>
+        </form>
+    </div>
+
+    <script>
+        // Função que valida os campos do formulário
+        function validarFormulario() {
+            // Captura os valores dos campos de entrada e remove espaços extras
+            const nome = document.getElementById('nome').value.trim(); // Captura o valor do campo "nome"
+            const email = document.getElementById('email').value.trim(); // Captura o valor do campo "email"
+            const telefone = document.getElementById('telefone').value.trim(); // Captura o valor do campo "telefone"
+            const mensagemErro = document.getElementById('mensagemErro'); // Referência para a div de mensagens de erro
+
+            // Limpa mensagens de erro anteriores
+            mensagemErro.textContent = '';
+
+            // Verifica se o campo "nome" está vazio
+            if (nome === '') {
+                mensagemErro.textContent = 'Por favor, preencha o campo nome.';
+                return; // Interrompe a execução da função se o campo estiver vazio
+            }
+
+            // sinal de alerta(!)Verifica se o campo "e-mail" está no formato correto (contém "@" e ".")
+            if (!email.includes('@') || !email.includes('.')) {
+                mensagemErro.textContent = 'Por favor, insira um e-mail válido.';
+                return; // Interrompe a execução da função se o e-mail for inválido
+            }
+
+            // Verifica se o campo "telefone" tem pelo menos 10 caracteres
+            if (telefone.length < 10) {
+                mensagemErro.textContent = 'Por favor, insira um telefone com pelo menos 10 dígitos.';
+                return; // Interrompe a execução da função se o telefone for muito curto
+            }
+
+            // Se todas as validações forem aprovadas, exibe uma mensagem de sucesso
+            alert('Formulário enviado com sucesso!');
+        }
+    </script>
+
+</body>
+</html>
