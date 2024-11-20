@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrossel Responsivo Simples</title>
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Carrossel Responsivo Simples</title>
+        <style>
         /* Estilo do container do carrossel */
         .carousel-container {
             overflow: hidden; /* Esconde partes das imagens que saem do container */
@@ -29,22 +29,45 @@
             display: block; /* Garante que não haja espaçamento abaixo das imagens */
         }
     </style>
-</head>
-<body>
+    </head>
+    <body>
 
-    <!-- Container do carrossel -->
-    <div class="carousel-container">
-        <div class="carousel-track" id="carouselTrack">
-            <!-- Itens do carrossel -->
-            <div class="carousel-item"><img src="https://github.githubassets.com/assets/social-2deb6d7d43e7.jpg" alt="Imagem 1"></div>
-            <div class="carousel-item"><img src="https://github.githubassets.com/assets/social-2deb6d7d43e7.jpg" alt="Imagem 2"></div>
-            <div class="carousel-item"><img src="https://github.githubassets.com/assets/social-2deb6d7d43e7.jpg" alt="Imagem 3"></div>
-            <!-- Clonagem da primeira imagem para criar o efeito de loop -->
-            <div class="carousel-item"><img src="https://github.githubassets.com/assets/social-2deb6d7d43e7.jpg" alt="Imagem 1 Clonada"></div>
+        <!-- Container do carrossel -->
+        <div class="carousel-container">
+
+            <div class="carousel-track" id="carouselTrack">
+
+                <!-- Itens do carrossel -->
+                <div class="carousel-item"><img
+                        src="https://github.githubassets.com/assets/social-2deb6d7d43e7.jpg"
+                        alt="Imagem 1">
+                </div>
+
+
+                <div class="carousel-item"><img
+                        src="https://github.githubassets.com/assets/social-2deb6d7d43e7.jpg"
+                        alt="Imagem 2">
+                </div>
+
+
+                <div class="carousel-item"><img
+                        src="https://github.githubassets.com/assets/social-2deb6d7d43e7.jpg"
+                        alt="Imagem 3">
+                </div>
+
+
+                <!-- Clonagem da primeira imagem para criar o efeito de loop -->
+                <div class="carousel-item"><img
+                        src="https://github.githubassets.com/assets/social-2deb6d7d43e7.jpg"
+                        alt="Imagem 1 Clonada">
+                </div>
+
+            </div>
         </div>
-    </div>
 
-    <script>
+
+
+        <script>
         // Seleciona o elemento que contém todas as imagens do carrossel pelo ID 'carouselTrack'
 const track = document.getElementById('carouselTrack');
 
@@ -63,7 +86,7 @@ function moveCarousel() {
     // Isso significa que o carrossel está no final e precisa voltar ao início
     if (index >= items.length - 1) { //Em JavaScript, a propriedade length é usada para retornar o número de elementos em uma estrutura de dados, como uma string, um array ou uma lista de elementos do DOM.
 
-// exemplo: "Hello".length        retorna 5, pois a string "Hello" tem 5 caracteres.
+// exemplo: ("Hello".length)        retorna 5, pois a string "Hello" tem 5 caracteres.
 
 
 
@@ -81,7 +104,6 @@ function moveCarousel() {
 
         }, 500); // O tempo de 500 ms garante que a transição anterior (se houver) seja completada
     } else {
-
         // Caso o índice ainda não tenha atingido o final, move o carrossel para a próxima imagem
 
         // Adiciona uma transição suave de 0.5 segundos para o movimento do carrossel
@@ -92,12 +114,11 @@ function moveCarousel() {
         track.style.transform = `translateX(-${index * 100}%)`;
     }
 }
-
 // Define um intervalo de tempo para chamar a função moveCarousel a cada 3000 milissegundos (3 segundos)
 // Isso faz com que o carrossel se mova automaticamente a cada 1 segundos
-setInterval(moveCarousel, 1000);
+setInterval(moveCarousel, 2000);
 
     </script>
 
-</body>
+    </body>
 </html>
